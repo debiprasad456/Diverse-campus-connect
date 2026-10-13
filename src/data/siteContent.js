@@ -3,7 +3,7 @@ export const siteContent = {
     name: "Diverse Campus Connect",
     shortName: "DCC",
     parentCompany: "Diverse Solutions",
-    parentTagline: "A Brand of Diverse Solutions",
+    parentTagline: "A Unit of Diverse Solutions",
     tagline: "Bridging Campuses. Connecting Careers.",
     description:
       "Diverse Campus Connect seamlessly unites educational institutions, premier employers, and ambitious students through structured campus placements, strategic corporate hiring, curated internship programs, and industry–academia partnerships.",
@@ -16,7 +16,6 @@ export const siteContent = {
     { label: "Campus Drives", href: "#drives" },
     { label: "For Colleges", href: "#for-colleges" },
     { label: "For Corporates", href: "#for-corporates" },
-    { label: "For Students", href: "#for-students" },
     { label: "Why Choose Us", href: "#why-choose-us" },
     { label: "Contact", href: "#contact" },
   ],
@@ -341,31 +340,6 @@ export const siteContent = {
       {
         title: "Lower Cost Per Hire",
         desc: "Accelerate your early-career hiring cycle while minimizing recruitment expenditure and internal resource strain.",
-      },
-    ],
-  },
-
-  forStudents: {
-    eyebrow: "For Students & Aspiring Professionals",
-    title: "Your Gateway to Internships, Placements, and Career Growth",
-    description:
-      "We help you bridge the gap between classroom theory and real corporate roles. Gain access to transparent placement opportunities, verified internships, and essential career mentorship.",
-    benefits: [
-      {
-        title: "Verified Corporate Openings",
-        desc: "Apply to legitimate internship and fresher job openings with genuine corporate employers and transparent packages.",
-      },
-      {
-        title: "Placement Preparation Support",
-        desc: "Access interview guidance, resume optimization tips, and aptitude practice guidance to stand out in selection rounds.",
-      },
-      {
-        title: "Hands-On Internship Pathways",
-        desc: "Secure practical, project-based internships that build verifiable portfolio experience and pre-placement opportunities.",
-      },
-      {
-        title: "Fair & Merit-Driven Opportunities",
-        desc: "Equal opportunity access to multi-college drives and emerging technology roles regardless of background.",
       },
     ],
   },

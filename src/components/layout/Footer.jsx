@@ -75,7 +75,7 @@ export const Footer = ({ onOpenPartnerModal }) => {
                   Diverse Campus Connect
                 </h4>
                 <p className="text-xs font-medium text-brand-teal-400 uppercase tracking-wider">
-                  A Brand of Diverse Solutions
+                  A Unit of Diverse Solutions
                 </p>
               </div>
             </div>
@@ -207,15 +207,6 @@ export const Footer = ({ onOpenPartnerModal }) => {
                   className="hover:text-brand-teal-300 transition-colors"
                 >
                   For Corporate HR Teams
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#for-students"
-                  onClick={(e) => handleNavClick(e, '#for-students')}
-                  className="hover:text-brand-teal-300 transition-colors"
-                >
-                  For Students & Graduates
                 </a>
               </li>
               <li>

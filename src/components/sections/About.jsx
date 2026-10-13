@@ -52,7 +52,7 @@ export const About = () => {
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-8 space-y-3">
               <span className="text-xs uppercase font-semibold tracking-wider text-brand-teal-400">
-                A Brand of Diverse Solutions
+                A Unit of Diverse Solutions
               </span>
               <h3 className="text-xl sm:text-2xl font-bold">
                 Synergizing Academic Ambition with Corporate Excellence

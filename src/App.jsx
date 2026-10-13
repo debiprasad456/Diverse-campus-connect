@@ -8,7 +8,6 @@ import Services from './components/sections/Services';
 import CampusDrives from './components/sections/CampusDrives';
 import ForColleges from './components/sections/ForColleges';
 import ForCorporates from './components/sections/ForCorporates';
-import ForStudents from './components/sections/ForStudents';
 import WhyChooseUs from './components/sections/WhyChooseUs';
 import Contact from './components/sections/Contact';
 import PartnerModal from './components/common/PartnerModal';
@@ -38,7 +37,6 @@ function App() {
         <CampusDrives onOpenPartnerModal={handleOpenPartnerModal} />
         <ForColleges onOpenPartnerModal={handleOpenPartnerModal} />
         <ForCorporates onOpenPartnerModal={handleOpenPartnerModal} />
-        <ForStudents onOpenPartnerModal={handleOpenPartnerModal} />
         <WhyChooseUs />
         <Contact />
       </main>

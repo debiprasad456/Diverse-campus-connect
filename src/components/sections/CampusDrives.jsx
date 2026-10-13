@@ -15,14 +15,12 @@ import {
   ChevronLeft,
   ChevronRight,
   ZoomIn,
-  Award,
 } from 'lucide-react';
 import Button from '../common/Button';
 
 export const CampusDrives = ({ onOpenPartnerModal }) => {
   const { campusDrives } = siteContent;
   const [activeFilter, setActiveFilter] = useState('all');
-  const [galleryFilter, setGalleryFilter] = useState('all');
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(null);
 
   const filterCategories = [
@@ -32,26 +30,12 @@ export const CampusDrives = ({ onOpenPartnerModal }) => {
     { id: 'engineering', label: 'Engineering Colleges' },
   ];
 
-  const galleryCategories = [
-    { id: 'all', label: `All Photos (${campusDrives.galleryPhotos.length})` },
-    { id: 'IIM Amritsar', label: 'IIM Amritsar' },
-    { id: 'IIM Kashipur', label: 'IIM Kashipur' },
-    { id: 'Srusti Academy', label: 'Srusti Academy' },
-    { id: 'BCET Balasore', label: 'BCET Balasore' },
-    { id: 'IMIT Cuttack', label: 'IMIT Cuttack' },
-  ];
-
   const filteredDrives = campusDrives.drives.filter((drive) => {
     if (activeFilter === 'all') return true;
     if (activeFilter === 'iim') return drive.college.includes('IIM') || drive.highlightTag.includes('IIM');
     if (activeFilter === 'management') return drive.disciplines.some(d => d.includes('Management') || d.includes('MBA') || d.includes('MCA'));
     if (activeFilter === 'engineering') return drive.college.includes('Engineering') || drive.highlightTag.includes('Engineering');
     return true;
-  });
-
-  const filteredGallery = campusDrives.galleryPhotos.filter((photo) => {
-    if (galleryFilter === 'all') return true;
-    return photo.category.toLowerCase().includes(galleryFilter.toLowerCase());
   });
 
   const openLightbox = (photoUrl) => {
@@ -83,26 +67,6 @@ export const CampusDrives = ({ onOpenPartnerModal }) => {
           title={campusDrives.title}
           subtitle={campusDrives.subtitle}
         />
-
-        {/* Partner Institutes Trust Bar */}
-        {campusDrives.partnerInstitutes && (
-          <div className="mb-12 p-4 rounded-2xl bg-slate-50 border border-slate-200/80 flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs text-slate-700">
-            <span className="font-bold text-slate-900 flex items-center gap-1.5 uppercase tracking-wider text-[11px] text-brand-teal">
-              <Award className="w-4 h-4 text-brand-teal" />
-              Verified Campus Drives:
-            </span>
-            {campusDrives.partnerInstitutes.map((inst, iIdx) => (
-              <span
-                key={iIdx}
-                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white border border-slate-200 shadow-2xs font-semibold text-slate-800"
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-brand-teal" />
-                {inst.name}
-                <span className="text-slate-400 font-normal text-[11px]">({inst.location})</span>
-              </span>
-            ))}
-          </div>
-        )}
 
         {/* Drive Filter Pills */}
         <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
@@ -233,50 +197,33 @@ export const CampusDrives = ({ onOpenPartnerModal }) => {
             </div>
           </div>
 
-          {/* Gallery Category Filter Tabs */}
-          <div className="flex flex-wrap items-center gap-2 mb-6">
-            {galleryCategories.map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => setGalleryFilter(cat.id)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-                  galleryFilter === cat.id
-                    ? 'bg-brand-navy-900 text-white shadow-xs'
-                    : 'bg-white hover:bg-slate-200 text-slate-700 border border-slate-200'
-                }`}
-              >
-                {cat.label}
-              </button>
-            ))}
+          {/* Gallery Category Tab - All Photos only */}
+          <div className="flex items-center gap-2 mb-6">
+            <span className="px-4 py-2 rounded-xl text-xs font-semibold bg-brand-navy-900 text-white shadow-xs">
+              All Photos ({campusDrives.galleryPhotos.length})
+            </span>
           </div>
 
-          {/* Photo Gallery Grid */}
+          {/* Clean Photo Gallery Grid - No Text On Photos */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-4">
-            {filteredGallery.map((photo, pIdx) => (
+            {campusDrives.galleryPhotos.map((photo, pIdx) => (
               <div
                 key={pIdx}
                 onClick={() => openLightbox(photo.url)}
-                className="group relative h-44 sm:h-52 rounded-xl overflow-hidden bg-slate-900 cursor-pointer shadow-sm hover:shadow-card border border-slate-200/80 transition-all duration-300"
+                className="group relative h-48 sm:h-56 rounded-xl overflow-hidden bg-slate-100 cursor-pointer shadow-xs hover:shadow-card border border-slate-200/80 hover:border-brand-teal/50 transition-all duration-300"
               >
+                {/* Unobstructed Clean Image */}
                 <img
                   src={photo.url}
                   alt={photo.title}
-                  className="w-full h-full object-cover object-top group-hover:scale-108 transition-transform duration-500"
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/25 to-transparent opacity-90 group-hover:opacity-100 transition-opacity" />
 
-                <div className="absolute inset-0 p-3 flex flex-col justify-between text-white z-10">
-                  <span className="self-end p-1.5 rounded-lg bg-black/40 backdrop-blur-xs text-white/80 group-hover:text-white transition-colors">
-                    <ZoomIn className="w-3.5 h-3.5" />
+                {/* Subtle Hover Action without text clutter */}
+                <div className="absolute inset-0 bg-slate-950/15 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <span className="p-2.5 rounded-full bg-white/95 text-slate-800 shadow-md transform scale-90 group-hover:scale-100 transition-transform">
+                    <ZoomIn className="w-4 h-4 text-brand-teal" />
                   </span>
-                  <div>
-                    <span className="text-[10px] uppercase font-semibold text-brand-teal-300 block leading-tight">
-                      {photo.category}
-                    </span>
-                    <h5 className="text-xs font-bold text-white line-clamp-2 mt-0.5 leading-snug">
-                      {photo.title}
-                    </h5>
-                  </div>
                 </div>
               </div>
             ))}

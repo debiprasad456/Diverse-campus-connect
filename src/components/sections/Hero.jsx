@@ -51,9 +51,9 @@ export const Hero = ({ onOpenPartnerModal }) => {
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.12]">
-              Bridging Campuses.{' '}
-              <span className="block text-gradient mt-1 sm:mt-2">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.22] pb-1">
+              <span className="inline-block pb-0.5">Bridging Campuses.</span>{' '}
+              <span className="block text-gradient pb-2.5 sm:pb-3.5 mt-1 sm:mt-1.5">
                 Connecting Careers.
               </span>
             </h1>

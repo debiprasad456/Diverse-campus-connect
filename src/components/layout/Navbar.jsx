@@ -150,16 +150,7 @@ export const Navbar = ({ onOpenPartnerModal }) => {
           </div>
 
           {/* Mobile / Tablet Menu Toggle */}
-          <div className="flex items-center gap-2 xl:hidden">
-            <Button
-              variant="teal"
-              size="sm"
-              onClick={(e) => handleNavClick(e, '#contact')}
-              className="sm:hidden text-xs px-2.5 py-1.5 whitespace-nowrap"
-            >
-              Partner
-            </Button>
-
+          <div className="flex items-center xl:hidden shrink-0">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 rounded-lg text-slate-700 hover:text-brand-navy-900 hover:bg-slate-100 focus:outline-none"

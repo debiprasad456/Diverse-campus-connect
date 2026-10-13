@@ -7,6 +7,8 @@ export const siteContent = {
     tagline: "Bridging Campuses. Connecting Careers.",
     description:
       "Diverse Campus Connect seamlessly unites educational institutions, premier employers, and ambitious students through structured campus placements, strategic corporate hiring, curated internship programs, and industry–academia partnerships.",
+    websiteUrl: "http://www.diversesolutions.in/",
+    linkedinUrl: "https://www.linkedin.com/company/diverse-recruitment-solutions/posts/?feedView=all",
   },
 
   navLinks: [
@@ -440,6 +442,8 @@ export const siteContent = {
     phone: "+91 82600 54398",
     whatsappNumber: "918260054398",
     email: "hr.diversesolutions@gmail.com",
+    website: "http://www.diversesolutions.in/",
+    linkedin: "https://www.linkedin.com/company/diverse-recruitment-solutions/posts/?feedView=all",
     address: "Ground floor, Plot - 3521/8176, Palasuni, Rasulgarh, Bhubaneswar, Odisha 751025",
     enquiryTypes: [
       { value: "college", label: "College / University Placement Cell" },

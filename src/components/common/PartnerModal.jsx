@@ -14,13 +14,36 @@ export const PartnerModal = ({ isOpen, onClose, onSelectTrack }) => {
 
   if (!isOpen) return null;
 
+  const [whatsappUrl, setWhatsappUrl] = useState('');
+
+  const getWhatsAppUrl = () => {
+    const roleLabels = {
+      college: 'College / University Placement Cell (TPO)',
+      corporate: 'Corporate Recruiter / HR Team',
+      student: 'Student Body / Candidate',
+    };
+    const msg = [
+      `*New Partnership Request — Diverse Campus Connect*`,
+      `• *Role:* ${roleLabels[selectedRole] || selectedRole}`,
+      `• *Name:* ${formData.name}`,
+      `• *Work Email:* ${formData.email}`,
+      `• *Organization/College:* ${formData.organization}`,
+      `• *Requirements/Scope:* ${formData.notes || 'N/A'}`,
+    ].join('\n');
+
+    return `https://wa.me/918260054398?text=${encodeURIComponent(msg)}`;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.organization) {
       alert('Please complete the required fields.');
       return;
     }
+    const url = getWhatsAppUrl();
+    setWhatsappUrl(url);
     setSubmitted(true);
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   const handleReset = () => {
@@ -52,18 +75,28 @@ export const PartnerModal = ({ isOpen, onClose, onSelectTrack }) => {
         {/* Content Body */}
         <div className="p-6">
           {submitted ? (
-            <div className="py-6 text-center space-y-4">
+            <div className="py-5 text-center space-y-4">
               <div className="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto border border-emerald-200">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
               <h4 className="text-xl font-bold text-slate-900">Partnership Request Received!</h4>
               <p className="text-sm text-slate-600 max-w-sm mx-auto leading-relaxed">
                 Thank you for your interest, <strong>{formData.name}</strong> from{' '}
-                <strong>{formData.organization}</strong>.
+                <strong>{formData.organization}</strong>. Your enquiry details have been routed to our campus consulting team.
               </p>
-              <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-500 text-left">
-                <span className="font-semibold block text-slate-700 mb-1">Frontend Demo Notice:</span>
-                This enquiry has been processed locally in this demo. For live inquiries, our team connects directly via official communication channels.
+              <div className="p-3.5 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-emerald-900 flex items-center justify-between gap-3 text-left">
+                <div>
+                  <span className="font-bold block text-emerald-950">WhatsApp Official Channel:</span>
+                  <span>+91 82600 54398</span>
+                </div>
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3.5 py-2 rounded-lg bg-[#25D366] hover:bg-[#20ba59] text-white font-semibold text-xs transition-colors shrink-0"
+                >
+                  Open Chat
+                </a>
               </div>
               <div className="pt-2">
                 <Button variant="primary" onClick={handleReset} className="w-full">

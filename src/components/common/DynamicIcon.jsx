@@ -19,6 +19,8 @@ import {
   ExternalLink,
   BookOpen,
   CheckCircle,
+  Phone,
+  MessageCircle,
 } from 'lucide-react';
 
 const iconMap = {
@@ -41,6 +43,8 @@ const iconMap = {
   ExternalLink,
   BookOpen,
   CheckCircle,
+  Phone,
+  MessageCircle,
 };
 
 export const DynamicIcon = ({ name, className = 'w-6 h-6', ...props }) => {

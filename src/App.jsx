@@ -11,6 +11,7 @@ import ForCorporates from './components/sections/ForCorporates';
 import WhyChooseUs from './components/sections/WhyChooseUs';
 import Contact from './components/sections/Contact';
 import PartnerModal from './components/common/PartnerModal';
+import WhatsAppButton from './components/common/WhatsAppButton';
 
 function App() {
   const [isPartnerModalOpen, setIsPartnerModalOpen] = useState(false);
@@ -49,6 +50,9 @@ function App() {
         isOpen={isPartnerModalOpen}
         onClose={handleClosePartnerModal}
       />
+
+      {/* Floating WhatsApp Action Button */}
+      <WhatsAppButton />
     </div>
   );
 }

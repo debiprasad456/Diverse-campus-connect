@@ -4,6 +4,7 @@ import {
   MapPin,
   ArrowUpRight,
   Globe,
+  Phone,
 } from 'lucide-react';
 import { siteContent } from '../../data/siteContent';
 
@@ -85,6 +86,18 @@ export const Footer = ({ onOpenPartnerModal }) => {
             </p>
 
             <div className="pt-2 flex items-center gap-3 text-slate-400">
+              <a
+                href="https://wa.me/918260054398"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-lg bg-[#25D366]/10 hover:bg-[#25D366] hover:text-white text-[#25D366] border border-[#25D366]/30 flex items-center justify-center transition-all"
+                aria-label="WhatsApp Direct Chat"
+                title="Chat on WhatsApp (+91 82600 54398)"
+              >
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                  <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c4.54 0 8.24 3.7 8.24 8.24 0 2.2-.86 4.28-2.42 5.83a8.19 8.19 0 0 1-5.82 2.41h-.01c-1.46 0-2.88-.39-4.13-1.12l-.3-.18-3.07.81.82-2.99-.19-.31a8.16 8.16 0 0 1-1.25-4.45c0-4.54 3.7-8.24 8.24-8.24zm4.53 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.26-1.5-1.41-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.72 4.31 3.81.6.26 1.07.42 1.44.53.61.2 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.12-.22-.19-.47-.32z"/>
+                </svg>
+              </a>
               <a
                 href="#contact"
                 className="w-9 h-9 rounded-lg bg-white/5 hover:bg-brand-teal/20 hover:text-brand-teal-300 border border-white/10 flex items-center justify-center transition-colors"
@@ -237,19 +250,40 @@ export const Footer = ({ onOpenPartnerModal }) => {
             </h5>
             <ul className="space-y-3 text-sm text-slate-400">
               <li className="flex items-start gap-2.5">
+                <Phone className="w-4 h-4 text-[#25D366] shrink-0 mt-0.5" />
+                <a
+                  href="https://wa.me/918260054398"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors"
+                >
+                  <span className="font-semibold text-white block">+91 82600 54398</span>
+                  <span className="text-xs text-brand-teal-300">WhatsApp & Direct Helpline</span>
+                </a>
+              </li>
+              <li className="flex items-start gap-2.5">
                 <Mail className="w-4 h-4 text-brand-teal-400 shrink-0 mt-0.5" />
-                <span>connect@diversesolutions.com</span>
+                <a
+                  href="mailto:hr.diversesolutions@gmail.com"
+                  className="hover:text-white transition-colors break-all"
+                >
+                  <span className="font-semibold text-white block">hr.diversesolutions@gmail.com</span>
+                  <span className="text-xs text-slate-400">Official Correspondence</span>
+                </a>
               </li>
               <li className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-brand-teal-400 shrink-0 mt-0.5" />
-                <span>Campus & Corporate Recruiting Network</span>
+                <div className="text-xs text-slate-300 leading-relaxed">
+                  <span className="font-semibold text-white block text-sm">Corporate Office</span>
+                  Ground floor, Plot - 3521/8176, Palasuni, Rasulgarh, Bhubaneswar, Odisha 751025
+                </div>
               </li>
-              <li className="pt-2">
+              <li className="pt-2 border-t border-white/5">
                 <span className="text-xs text-slate-500 block">
                   Support & Drive Operations:
                 </span>
                 <span className="text-xs text-slate-300 font-medium">
-                  Mon – Fri: 9:30 AM – 6:30 PM IST
+                  Mon – Sat: 9:30 AM – 6:30 PM IST
                 </span>
               </li>
             </ul>

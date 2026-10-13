@@ -256,57 +256,73 @@ export const CampusDrives = ({ onOpenPartnerModal }) => {
         </div>
       </div>
 
-      {/* Lightbox Modal */}
+      {/* Lightbox Modal - Click blank space to close, no cross icon, high-contrast readable text */}
       {selectedPhotoIndex !== null && (
-        <div className="fixed inset-0 z-50 bg-black/92 backdrop-blur-md flex flex-col items-center justify-center p-4 sm:p-6 animate-fade-in">
-          {/* Top Bar */}
-          <div className="w-full max-w-5xl flex items-center justify-between text-white pb-3">
-            <div>
-              <span className="text-xs uppercase font-semibold tracking-wider text-brand-teal-400">
-                {campusDrives.galleryPhotos[selectedPhotoIndex].category}
+        <div
+          onClick={closeLightbox}
+          className="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-xl flex flex-col items-center justify-between p-4 sm:p-6 md:p-8 animate-fade-in cursor-zoom-out select-none"
+        >
+          {/* Top Header - High-contrast readable title & category */}
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="w-full max-w-4xl text-center pt-2 cursor-default"
+          >
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-brand-teal text-white shadow-sm mb-2">
+              <span>{campusDrives.galleryPhotos[selectedPhotoIndex].category}</span>
+              <span className="text-white/60">•</span>
+              <span className="text-white/90">
+                Photo {selectedPhotoIndex + 1} of {campusDrives.galleryPhotos.length}
               </span>
-              <h4 className="text-sm sm:text-base font-bold">
-                {campusDrives.galleryPhotos[selectedPhotoIndex].title}
-              </h4>
             </div>
-            <button
-              onClick={closeLightbox}
-              className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors"
-              aria-label="Close photo preview"
-            >
-              <X className="w-5 h-5" />
-            </button>
+            <h3 className="text-lg sm:text-xl md:text-2xl font-extrabold text-white tracking-tight drop-shadow">
+              {campusDrives.galleryPhotos[selectedPhotoIndex].title}
+            </h3>
           </div>
 
-          {/* Image Container with Prev / Next */}
-          <div className="relative w-full max-w-5xl max-h-[75vh] flex items-center justify-center">
+          {/* Center Image Container with Prev / Next */}
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative w-full max-w-4xl flex-1 max-h-[70vh] flex items-center justify-center my-3 cursor-default"
+          >
             <img
               src={campusDrives.galleryPhotos[selectedPhotoIndex].url}
               alt={campusDrives.galleryPhotos[selectedPhotoIndex].title}
-              className="max-w-full max-h-[72vh] object-contain rounded-xl shadow-2xl"
+              className="max-w-full max-h-[68vh] object-contain rounded-2xl shadow-2xl border border-white/10"
             />
 
+            {/* Previous Button */}
             <button
-              onClick={prevPhoto}
-              className="absolute left-2 sm:-left-12 p-2.5 rounded-full bg-white/20 hover:bg-white text-white hover:text-slate-900 transition-all shadow-lg"
+              onClick={(e) => {
+                e.stopPropagation();
+                prevPhoto();
+              }}
+              className="absolute left-1 sm:-left-14 top-1/2 -translate-y-1/2 p-3 rounded-full bg-slate-900/80 hover:bg-white text-white hover:text-slate-900 transition-all shadow-xl border border-white/20 hover:scale-105"
               aria-label="Previous photo"
             >
-              <ChevronLeft className="w-5 h-5" />
+              <ChevronLeft className="w-6 h-6" />
             </button>
 
+            {/* Next Button */}
             <button
-              onClick={nextPhoto}
-              className="absolute right-2 sm:-right-12 p-2.5 rounded-full bg-white/20 hover:bg-white text-white hover:text-slate-900 transition-all shadow-lg"
+              onClick={(e) => {
+                e.stopPropagation();
+                nextPhoto();
+              }}
+              className="absolute right-1 sm:-right-14 top-1/2 -translate-y-1/2 p-3 rounded-full bg-slate-900/80 hover:bg-white text-white hover:text-slate-900 transition-all shadow-xl border border-white/20 hover:scale-105"
               aria-label="Next photo"
             >
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-6 h-6" />
             </button>
           </div>
 
-          {/* Caption */}
-          <div className="w-full max-w-5xl pt-3 text-center text-xs text-slate-300">
-            {campusDrives.galleryPhotos[selectedPhotoIndex].caption} (Photo{' '}
-            {selectedPhotoIndex + 1} of {campusDrives.galleryPhotos.length})
+          {/* Bottom Caption Bar */}
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="w-full max-w-3xl text-center pb-2 cursor-default"
+          >
+            <p className="text-xs sm:text-sm text-slate-200 bg-slate-900/70 border border-white/10 px-4 py-2 rounded-xl backdrop-blur-md inline-block shadow-lg leading-relaxed">
+              {campusDrives.galleryPhotos[selectedPhotoIndex].caption}
+            </p>
           </div>
         </div>
       )}

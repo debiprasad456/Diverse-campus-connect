@@ -41,11 +41,33 @@ export const Contact = () => {
     return Object.keys(errs).length === 0;
   };
 
+  const getWhatsAppUrl = (data) => {
+    const typeLabel =
+      contact.enquiryTypes.find((t) => t.value === data.enquiryType)?.label ||
+      data.enquiryType;
+    const msg = [
+      `*New Inquiry — Diverse Campus Connect*`,
+      `• *Name:* ${data.name}`,
+      `• *Email:* ${data.email}`,
+      `• *Organization/College:* ${data.organization}`,
+      `• *Category:* ${typeLabel}`,
+      `• *Message:* ${data.message}`,
+    ].join('\n');
+
+    return `https://wa.me/918260054398?text=${encodeURIComponent(msg)}`;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
-      // Store locally for demo preview
-      setSubmittedData({ ...formData, timestamp: new Date().toLocaleTimeString() });
+      const waUrl = getWhatsAppUrl(formData);
+      setSubmittedData({
+        ...formData,
+        whatsappUrl: waUrl,
+        timestamp: new Date().toLocaleTimeString(),
+      });
+      // Directly open WhatsApp with formatted message
+      window.open(waUrl, '_blank', 'noopener,noreferrer');
     }
   };
 
@@ -86,28 +108,42 @@ export const Contact = () => {
                 </p>
               </div>
 
-              <div className="space-y-4 pt-2">
-                {contact.infoCards.map((card, idx) => (
-                  <div
-                    key={idx}
-                    className="p-3.5 rounded-xl bg-white/5 border border-white/10 flex items-start gap-3.5"
-                  >
-                    <div className="p-2 rounded-lg bg-brand-teal/20 text-brand-teal-300 shrink-0 mt-0.5">
-                      <DynamicIcon name={card.iconName} className="w-5 h-5 text-brand-teal-300" />
-                    </div>
-                    <div>
-                      <div className="text-[11px] uppercase tracking-wider font-semibold text-slate-400">
-                        {card.title}
+              <div className="space-y-3.5 pt-2">
+                {contact.infoCards.map((card, idx) => {
+                  const CardWrapper = card.href ? 'a' : 'div';
+                  return (
+                    <CardWrapper
+                      key={idx}
+                      {...(card.href
+                        ? {
+                            href: card.href,
+                            target: card.href.startsWith('http') ? '_blank' : undefined,
+                            rel: card.href.startsWith('http') ? 'noopener noreferrer' : undefined,
+                          }
+                        : {})}
+                      className={`p-3.5 rounded-xl bg-white/5 border border-white/10 flex items-start gap-3.5 transition-all ${
+                        card.href
+                          ? 'hover:bg-white/10 hover:border-brand-teal/40 group cursor-pointer'
+                          : ''
+                      }`}
+                    >
+                      <div className="p-2 rounded-lg bg-brand-teal/20 text-brand-teal-300 shrink-0 mt-0.5 group-hover:scale-105 transition-transform">
+                        <DynamicIcon name={card.iconName} className="w-5 h-5 text-brand-teal-300" />
                       </div>
-                      <div className="text-sm font-semibold text-white mt-0.5">
-                        {card.details}
+                      <div className="min-w-0 flex-1">
+                        <div className="text-[11px] uppercase tracking-wider font-semibold text-slate-400">
+                          {card.title}
+                        </div>
+                        <div className="text-sm font-semibold text-white mt-0.5 break-words">
+                          {card.details}
+                        </div>
+                        <div className="text-xs text-slate-300">
+                          {card.subDetails}
+                        </div>
                       </div>
-                      <div className="text-xs text-slate-300">
-                        {card.subDetails}
-                      </div>
-                    </div>
-                  </div>
-                ))}
+                    </CardWrapper>
+                  );
+                })}
               </div>
 
               <div className="pt-4 border-t border-white/10 text-xs text-slate-400 leading-relaxed">
@@ -116,23 +152,24 @@ export const Contact = () => {
             </div>
           </div>
 
-          {/* Right Column: Contact Form with Validation */}
+          {/* Right Column: Contact Form with WhatsApp Integration */}
           <div className="lg:col-span-7">
             <div className="bg-white rounded-2xl p-7 sm:p-9 border border-slate-200/90 shadow-card">
               {submittedData ? (
                 /* Success Feedback State */
-                <div className="py-6 space-y-5 animate-fade-in">
-                  <div className="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center border border-emerald-200">
-                    <CheckCircle2 className="w-8 h-8" />
-                  </div>
-
-                  <div>
-                    <h3 className="text-xl font-bold text-slate-900">
-                      Enquiry Submitted Successfully (Demo State)
-                    </h3>
-                    <p className="text-sm text-slate-600 mt-1">
-                      Thank you, <strong>{submittedData.name}</strong>. Your enquiry details have been verified on the frontend.
-                    </p>
+                <div className="py-6 space-y-6 animate-fade-in">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center border border-emerald-200 shrink-0">
+                      <CheckCircle2 className="w-7 h-7" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-slate-900">
+                        Enquiry Submitted Successfully
+                      </h3>
+                      <p className="text-sm text-slate-600 mt-0.5">
+                        Thank you, <strong>{submittedData.name}</strong>. Your enquiry details have been prepared for direct dispatch.
+                      </p>
+                    </div>
                   </div>
 
                   {/* Summary of what was entered */}
@@ -140,20 +177,32 @@ export const Contact = () => {
                     <div className="font-bold text-slate-900 border-b border-slate-200 pb-1">
                       Submitted Enquiry Summary:
                     </div>
-                    <div><span className="font-semibold">Full Name:</span> {submittedData.name}</div>
-                    <div><span className="font-semibold">Email:</span> {submittedData.email}</div>
-                    <div><span className="font-semibold">Organization:</span> {submittedData.organization}</div>
-                    <div><span className="font-semibold">Category:</span> {submittedData.enquiryType}</div>
-                    <div><span className="font-semibold">Message:</span> "{submittedData.message}"</div>
-                    <div><span className="font-semibold">Client Timestamp:</span> {submittedData.timestamp}</div>
+                    <div><span className="font-semibold text-slate-800">Full Name:</span> {submittedData.name}</div>
+                    <div><span className="font-semibold text-slate-800">Email:</span> {submittedData.email}</div>
+                    <div><span className="font-semibold text-slate-800">Organization:</span> {submittedData.organization}</div>
+                    <div><span className="font-semibold text-slate-800">Category:</span> {submittedData.enquiryType}</div>
+                    <div><span className="font-semibold text-slate-800">Message:</span> "{submittedData.message}"</div>
+                    <div><span className="font-semibold text-slate-800">Timestamp:</span> {submittedData.timestamp}</div>
                   </div>
 
-                  {/* Explicit Transparent Notice */}
-                  <div className="p-3.5 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-800 flex items-start gap-2.5">
-                    <AlertCircle className="w-4 h-4 shrink-0 text-amber-600 mt-0.5" />
-                    <p>
-                      <strong>Frontend Notice:</strong> This is a client-side prototype. No backend email server is connected yet, so this message was not dispatched across the web. You can integrate Formspree, EmailJS, or your backend API seamlessly.
-                    </p>
+                  {/* WhatsApp Quick Dispatch Callout */}
+                  <div className="p-4 bg-emerald-50/80 border border-emerald-200 rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                    <div className="space-y-0.5">
+                      <div className="text-xs font-bold text-emerald-900 flex items-center gap-1.5">
+                        <span>Direct WhatsApp Channel</span>
+                      </div>
+                      <p className="text-xs text-emerald-800">
+                        Connect with our recruitment desk on WhatsApp at <strong className="text-emerald-950">+91 82600 54398</strong>.
+                      </p>
+                    </div>
+                    <a
+                      href={submittedData.whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-semibold shadow-xs hover:shadow-md transition-all flex items-center gap-2 shrink-0"
+                    >
+                      <span>Open in WhatsApp</span>
+                    </a>
                   </div>
 
                   <div className="pt-2">
@@ -302,17 +351,18 @@ export const Contact = () => {
 
                   {/* Form Submission CTA */}
                   <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <p className="text-[11px] text-slate-500 text-center sm:text-left">
-                      Strict privacy assurance under Diverse Solutions guidelines.
-                    </p>
+                    <div className="text-[11px] text-slate-500 text-center sm:text-left">
+                      <span>Direct connection to our recruitment desk via WhatsApp.</span>
+                      <span className="block text-slate-400 font-medium">Official Helpline: +91 82600 54398</span>
+                    </div>
                     <Button
                       type="submit"
                       variant="teal"
                       size="md"
-                      className="w-full sm:w-auto shadow-card hover:shadow-glow-teal"
+                      className="w-full sm:w-auto shadow-card hover:shadow-glow-teal !bg-emerald-600 hover:!bg-emerald-700 !text-white flex items-center justify-center gap-2"
                       icon={<Send className="w-4 h-4" />}
                     >
-                      Submit Official Inquiry
+                      <span>Send Enquiry via WhatsApp</span>
                     </Button>
                   </div>
                 </form>

@@ -136,8 +136,9 @@ export const siteContent = {
     eyebrow: "Track Record & Impact",
     title: "Successful Campus Drives Across Premier Institutions",
     subtitle:
-      "A showcase of real-world on-campus hiring drives, GD/PI interview panels, and placement partnerships executed across esteemed institutions including IIM Amritsar, IIM Kashipur, Srusti Academy, BCET Balasore, and IMIT Cuttack.",
+      "A showcase of real-world on-campus hiring drives, GD/PI interview panels, and placement partnerships executed across esteemed institutions including IIM Sirmaur, IIM Amritsar, IIM Kashipur, Srusti Academy, BCET Balasore, and IMIT Cuttack.",
     partnerInstitutes: [
+      { name: "IIM Sirmaur", location: "Himachal Pradesh", type: "Premier Management" },
       { name: "IIM Amritsar", location: "Punjab", type: "Premier Management" },
       { name: "IIM Kashipur", location: "Uttarakhand", type: "Premier Management" },
       { name: "Srusti Academy", location: "Bhubaneswar", type: "Management & Tech" },
@@ -145,6 +146,42 @@ export const siteContent = {
       { name: "IMIT Cuttack", location: "Cuttack (BPUT)", type: "Management & IT" },
     ],
     galleryPhotos: [
+      {
+        url: "/drives/iim-sirmaur-felicitation.jpeg",
+        title: "IIM Sirmaur — Traditional Himachali Felicitation",
+        category: "IIM Sirmaur",
+        caption: "Diverse Solutions recruitment delegation receiving official institutional welcome with traditional Himachali caps and shawls at IIM Sirmaur.",
+      },
+      {
+        url: "/drives/iim-sirmaur-boardroom-meeting.jpeg",
+        title: "IIM Sirmaur — Placement Strategy & Boardroom Discussion",
+        category: "IIM Sirmaur",
+        caption: "Consulting leadership conducting drive orientation and recruiter briefing with placement coordinators in the executive boardroom.",
+      },
+      {
+        url: "/drives/iim-sirmaur-auditorium-session.jpeg",
+        title: "IIM Sirmaur — Pre-Placement Cohort Session",
+        category: "IIM Sirmaur",
+        caption: "MBA batch attending the pre-placement orientation and corporate briefing in the tiered academic lecture hall.",
+      },
+      {
+        url: "/drives/iim-sirmaur-gd-round-1.jpeg",
+        title: "IIM Sirmaur — Group Discussion Round",
+        category: "IIM Sirmaur",
+        caption: "Candidate cohort participating in intensive group discussion and business problem-solving rounds.",
+      },
+      {
+        url: "/drives/iim-sirmaur-gd-round-2.jpeg",
+        title: "IIM Sirmaur — Case Study & Candidate GD Evaluation",
+        category: "IIM Sirmaur",
+        caption: "Management finalists undergoing case study evaluations and interactive discussion rounds.",
+      },
+      {
+        url: "/drives/iim-sirmaur-interview-panel.jpeg",
+        title: "IIM Sirmaur — Interview Panel & Final Assessment",
+        category: "IIM Sirmaur",
+        caption: "Structured interview rounds with shortlisted management candidates in the executive conference room.",
+      },
       {
         url: "/drives/iim-amritsar-itinerary.png",
         title: "IIM Amritsar — Placement Itinerary Partner",
@@ -231,6 +268,18 @@ export const siteContent = {
       },
     ],
     drives: [
+      {
+        id: "drive-iim-sirmaur",
+        college: "Indian Institute of Management Sirmaur (IIM Sirmaur)",
+        location: "Paonta Sahib, Himachal Pradesh",
+        type: "On-Campus Executive Management Drive",
+        date: "MBA Placement Drive",
+        disciplines: ["Marketing", "Finance", "Strategy & Consulting", "Operations", "Analytics"],
+        summary: "End-to-end recruitment drive encompassing institutional felicitation, auditorium pre-placement orientation, and boardroom GD/PI assessment rounds.",
+        image: "/drives/iim-sirmaur-felicitation.jpeg",
+        highlightTag: "Premier IIM Partner",
+        stats: "Full GD/PI Recruitment Drive",
+      },
       {
         id: "drive-iim-amritsar",
         college: "Indian Institute of Management Amritsar (IIM Amritsar)",

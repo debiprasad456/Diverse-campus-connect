@@ -298,16 +298,26 @@ export const CampusDrives = ({ onOpenPartnerModal }) => {
         </div>
       </div>
 
-      {/* Lightbox Modal - Click blank space to close, no cross icon, high-contrast readable text */}
+      {/* Lightbox Modal - Click blank space to close, Close X icon, high-contrast readable text */}
       {selectedPhotoIndex !== null && (
         <div
           onClick={closeLightbox}
-          className="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-xl flex flex-col items-center justify-between p-4 sm:p-6 md:p-8 animate-fade-in cursor-zoom-out select-none"
+          className="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-xl flex flex-col items-center justify-between p-4 sm:p-6 md:p-8 animate-fade-in cursor-pointer select-none"
         >
+          {/* Close Button (Cross / X icon) */}
+          <button
+            onClick={closeLightbox}
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 z-20 p-2.5 rounded-full bg-slate-900/80 hover:bg-white text-white hover:text-slate-900 border border-white/20 transition-all shadow-xl hover:scale-105 active:scale-95"
+            aria-label="Close enlarged photo"
+            title="Close"
+          >
+            <X className="w-5 h-5 sm:w-6 sm:h-6" />
+          </button>
+
           {/* Top Header - High-contrast readable title & category */}
           <div
             onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-4xl text-center pt-2 cursor-default"
+            className="w-full max-w-4xl text-center pt-2 pr-12 sm:pr-0 cursor-default"
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-brand-teal text-white shadow-sm mb-2">
               <span>{campusDrives.galleryPhotos[selectedPhotoIndex].category}</span>
@@ -323,13 +333,13 @@ export const CampusDrives = ({ onOpenPartnerModal }) => {
 
           {/* Center Image Container with Prev / Next */}
           <div
-            onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-4xl flex-1 max-h-[70vh] flex items-center justify-center my-3 cursor-default"
+            className="relative w-full max-w-4xl flex-1 max-h-[70vh] flex items-center justify-center my-3"
           >
             <img
+              onClick={(e) => e.stopPropagation()}
               src={campusDrives.galleryPhotos[selectedPhotoIndex].url}
               alt={campusDrives.galleryPhotos[selectedPhotoIndex].title}
-              className="max-w-full max-h-[68vh] object-contain rounded-2xl shadow-2xl border border-white/10"
+              className="max-w-full max-h-[68vh] object-contain rounded-2xl shadow-2xl border border-white/10 cursor-default"
             />
 
             {/* Previous Button */}
@@ -359,10 +369,12 @@ export const CampusDrives = ({ onOpenPartnerModal }) => {
 
           {/* Bottom Caption Bar */}
           <div
-            onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-3xl text-center pb-2 cursor-default"
+            className="w-full max-w-3xl text-center pb-2 cursor-pointer"
           >
-            <p className="text-xs sm:text-sm text-slate-200 bg-slate-900/70 border border-white/10 px-4 py-2 rounded-xl backdrop-blur-md inline-block shadow-lg leading-relaxed">
+            <p
+              onClick={(e) => e.stopPropagation()}
+              className="text-xs sm:text-sm text-slate-200 bg-slate-900/70 border border-white/10 px-4 py-2 rounded-xl backdrop-blur-md inline-block shadow-lg leading-relaxed cursor-default"
+            >
               {campusDrives.galleryPhotos[selectedPhotoIndex].caption}
             </p>
           </div>

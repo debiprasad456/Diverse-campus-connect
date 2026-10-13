@@ -15,6 +15,18 @@ import Button from '../common/Button';
 export const ForColleges = ({ onOpenPartnerModal }) => {
   const { forColleges } = siteContent;
 
+  const scrollToContact = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    const el = document.querySelector('#contact');
+    if (el) {
+      const headerOffset = 80;
+      const elementPosition = el.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    }
+    window.dispatchEvent(new CustomEvent('select-enquiry-type', { detail: 'college' }));
+  };
+
   return (
     <section id="for-colleges" className="py-20 sm:py-24 bg-slate-50 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -89,7 +101,7 @@ export const ForColleges = ({ onOpenPartnerModal }) => {
                     <span className="text-slate-300 text-[11px]">Enquire for upcoming recruitment seasons</span>
                   </div>
                   <button
-                    onClick={onOpenPartnerModal}
+                    onClick={scrollToContact}
                     className="px-3 py-1.5 rounded-lg bg-brand-teal text-white font-semibold hover:bg-brand-teal-600 transition-colors"
                   >
                     Partner
@@ -132,7 +144,7 @@ export const ForColleges = ({ onOpenPartnerModal }) => {
               <Button
                 variant="primary"
                 size="md"
-                onClick={onOpenPartnerModal}
+                onClick={scrollToContact}
               >
                 Connect Your Placement Cell
               </Button>

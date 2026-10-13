@@ -59,6 +59,18 @@ export const CampusDrives = ({ onOpenPartnerModal }) => {
     );
   };
 
+  const scrollToContact = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    const el = document.querySelector('#contact');
+    if (el) {
+      const headerOffset = 80;
+      const elementPosition = el.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    }
+    window.dispatchEvent(new CustomEvent('select-enquiry-type', { detail: 'college' }));
+  };
+
   return (
     <section id="drives" className="py-20 sm:py-24 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -165,7 +177,7 @@ export const CampusDrives = ({ onOpenPartnerModal }) => {
                     {drive.stats}
                   </span>
                   <button
-                    onClick={onOpenPartnerModal}
+                    onClick={scrollToContact}
                     className="font-bold text-brand-teal hover:text-brand-teal-700 flex items-center gap-1 transition-colors text-[11px]"
                   >
                     <span>Partner</span>
@@ -248,7 +260,7 @@ export const CampusDrives = ({ onOpenPartnerModal }) => {
           <Button
             variant="teal"
             size="md"
-            onClick={onOpenPartnerModal}
+            onClick={scrollToContact}
             className="shrink-0 text-xs shadow-card"
           >
             Connect Placement Cell

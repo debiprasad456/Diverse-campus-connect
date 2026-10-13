@@ -29,6 +29,20 @@ export const Hero = ({ onOpenPartnerModal }) => {
     }
   };
 
+  const scrollToContact = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    const el = document.querySelector('#contact');
+    if (el) {
+      const headerOffset = 80;
+      const elementPosition = el.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   return (
     <section
       id="hero"
@@ -68,7 +82,7 @@ export const Hero = ({ onOpenPartnerModal }) => {
               <Button
                 variant="teal"
                 size="lg"
-                onClick={onOpenPartnerModal}
+                onClick={scrollToContact}
                 className="w-full sm:w-auto shadow-card hover:shadow-glow-teal"
                 icon={<ArrowRight className="w-5 h-5" />}
               >

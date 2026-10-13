@@ -141,7 +141,7 @@ export const Navbar = ({ onOpenPartnerModal }) => {
             <Button
               variant="teal"
               size="sm"
-              onClick={onOpenPartnerModal}
+              onClick={(e) => handleNavClick(e, '#contact')}
               className="text-xs tracking-wide shadow-sm whitespace-nowrap px-4 py-2"
               icon={<ArrowUpRight className="w-3.5 h-3.5" />}
             >
@@ -154,7 +154,7 @@ export const Navbar = ({ onOpenPartnerModal }) => {
             <Button
               variant="teal"
               size="sm"
-              onClick={onOpenPartnerModal}
+              onClick={(e) => handleNavClick(e, '#contact')}
               className="sm:hidden text-xs px-2.5 py-1.5 whitespace-nowrap"
             >
               Partner
@@ -216,10 +216,7 @@ export const Navbar = ({ onOpenPartnerModal }) => {
               <Button
                 variant="teal"
                 size="md"
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenPartnerModal();
-                }}
+                onClick={(e) => handleNavClick(e, '#contact')}
                 className="w-full text-center"
                 icon={<ArrowUpRight className="w-4 h-4" />}
               >

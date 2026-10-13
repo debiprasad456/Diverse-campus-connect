@@ -44,7 +44,7 @@ export const Footer = ({ onOpenPartnerModal }) => {
             </div>
             <div className="flex items-center gap-3 shrink-0">
               <button
-                onClick={onOpenPartnerModal}
+                onClick={(e) => handleNavClick(e, '#contact')}
                 className="px-6 py-3 rounded-xl bg-brand-teal hover:bg-brand-teal-600 text-white font-semibold text-sm shadow-card hover:shadow-glow-teal transition-all flex items-center gap-2"
               >
                 <span>Partner With Us</span>

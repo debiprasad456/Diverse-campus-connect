@@ -33,6 +33,18 @@ export const ForCorporates = ({ onOpenPartnerModal }) => {
     },
   ];
 
+  const scrollToContact = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    const el = document.querySelector('#contact');
+    if (el) {
+      const headerOffset = 80;
+      const elementPosition = el.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    }
+    window.dispatchEvent(new CustomEvent('select-enquiry-type', { detail: 'corporate' }));
+  };
+
   return (
     <section id="for-corporates" className="py-20 sm:py-24 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -70,7 +82,7 @@ export const ForCorporates = ({ onOpenPartnerModal }) => {
               <Button
                 variant="teal"
                 size="md"
-                onClick={onOpenPartnerModal}
+                onClick={scrollToContact}
               >
                 Hire Fresher Talent
               </Button>

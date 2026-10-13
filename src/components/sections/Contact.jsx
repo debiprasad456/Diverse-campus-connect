@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SectionHeading from '../common/SectionHeading';
 import { siteContent } from '../../data/siteContent';
 import DynamicIcon from '../common/DynamicIcon';
 import Button from '../common/Button';
-import { CheckCircle2, AlertCircle, Send, RotateCcw } from 'lucide-react';
+import { CheckCircle2, Send, RotateCcw } from 'lucide-react';
 
 export const Contact = () => {
   const { contact } = siteContent;
@@ -18,6 +18,16 @@ export const Contact = () => {
 
   const [errors, setErrors] = useState({});
   const [submittedData, setSubmittedData] = useState(null);
+
+  useEffect(() => {
+    const handleCategorySelect = (e) => {
+      if (e.detail) {
+        setFormData((prev) => ({ ...prev, enquiryType: e.detail }));
+      }
+    };
+    window.addEventListener('select-enquiry-type', handleCategorySelect);
+    return () => window.removeEventListener('select-enquiry-type', handleCategorySelect);
+  }, []);
 
   const validate = () => {
     const errs = {};

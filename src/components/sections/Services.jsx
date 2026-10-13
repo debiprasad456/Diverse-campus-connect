@@ -8,6 +8,18 @@ import Button from '../common/Button';
 export const Services = ({ onOpenPartnerModal }) => {
   const { services } = siteContent;
 
+  const scrollToContact = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    const el = document.querySelector('#contact');
+    if (el) {
+      const headerOffset = 80;
+      const elementPosition = el.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    }
+    window.dispatchEvent(new CustomEvent('select-enquiry-type', { detail: 'general' }));
+  };
+
   return (
     <section id="services" className="py-20 sm:py-24 bg-slate-50 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -59,7 +71,7 @@ export const Services = ({ onOpenPartnerModal }) => {
               {/* Bottom Quick Action */}
               <div className="pt-6 mt-6 border-t border-slate-100">
                 <button
-                  onClick={onOpenPartnerModal}
+                  onClick={scrollToContact}
                   className="w-full text-xs font-semibold text-slate-700 group-hover:text-brand-teal flex items-center justify-between py-1 transition-colors"
                 >
                   <span>Inquire about this service</span>
@@ -86,7 +98,7 @@ export const Services = ({ onOpenPartnerModal }) => {
               <Button
                 variant="teal"
                 size="md"
-                onClick={onOpenPartnerModal}
+                onClick={scrollToContact}
                 className="w-full text-center"
               >
                 Schedule a Consultation

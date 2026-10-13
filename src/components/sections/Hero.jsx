@@ -190,18 +190,13 @@ export const Hero = ({ onOpenPartnerModal }) => {
                 {/* Bottom Highlight Pill */}
                 <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
                   <div className="flex items-center gap-1.5 text-slate-500 font-medium">
-                    <Award className="w-4 h-4 text-amber-500" />
-                    <span>Consulting Standards</span>
                   </div>
-                  <span className="font-semibold text-brand-navy-800">
-                    Diverse Solutions Brand
-                  </span>
                 </div>
               </div>
 
               {/* Floating Stat Chip (Top-right) */}
               <div className="hidden sm:flex absolute -top-4 -right-4 bg-white/95 backdrop-blur-md px-3.5 py-2 rounded-xl shadow-card border border-slate-200/80 items-center gap-2 text-xs font-semibold text-slate-800 animate-slide-up">
-                <Sparkles className="w-4 h-4 text-brand-teal" />
+                <Award className="w-4 h-4 text-brand-teal" />
                 <span>Structured Placement Drives</span>
               </div>
             </div>

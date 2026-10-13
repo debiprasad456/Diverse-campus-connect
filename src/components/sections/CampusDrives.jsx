@@ -14,6 +14,8 @@ import {
   X,
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
+  ChevronUp,
   ZoomIn,
 } from 'lucide-react';
 import Button from '../common/Button';
@@ -22,6 +24,7 @@ export const CampusDrives = ({ onOpenPartnerModal }) => {
   const { campusDrives } = siteContent;
   const [activeFilter, setActiveFilter] = useState('all');
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(null);
+  const [showAllMobilePhotos, setShowAllMobilePhotos] = useState(false);
 
   const filterCategories = [
     { id: 'all', label: 'All Partner Drives' },
@@ -222,7 +225,9 @@ export const CampusDrives = ({ onOpenPartnerModal }) => {
               <div
                 key={pIdx}
                 onClick={() => openLightbox(photo.url)}
-                className="group relative h-48 sm:h-56 rounded-xl overflow-hidden bg-slate-100 cursor-pointer shadow-xs hover:shadow-card border border-slate-200/80 hover:border-brand-teal/50 transition-all duration-300"
+                className={`group relative h-48 sm:h-56 rounded-xl overflow-hidden bg-slate-100 cursor-pointer shadow-xs hover:shadow-card border border-slate-200/80 hover:border-brand-teal/50 transition-all duration-300 ${
+                  !showAllMobilePhotos && pIdx >= 6 ? 'hidden sm:block' : ''
+                }`}
               >
                 {/* Unobstructed Clean Image */}
                 <img
@@ -240,6 +245,31 @@ export const CampusDrives = ({ onOpenPartnerModal }) => {
               </div>
             ))}
           </div>
+
+          {/* Mobile Show More / Show Less Button */}
+          {campusDrives.galleryPhotos.length > 6 && (
+            <div className="mt-5 flex justify-center sm:hidden">
+              <button
+                type="button"
+                onClick={() => setShowAllMobilePhotos((prev) => !prev)}
+                className="w-full py-3 px-5 rounded-xl font-bold text-xs flex items-center justify-center gap-2 bg-white hover:bg-slate-100 text-brand-navy-900 border border-slate-300 shadow-xs active:scale-[0.98] transition-all"
+              >
+                {showAllMobilePhotos ? (
+                  <>
+                    <span>Show Less Photos</span>
+                    <ChevronUp className="w-4 h-4 text-brand-teal" />
+                  </>
+                ) : (
+                  <>
+                    <span>
+                      Show More Photos (+{campusDrives.galleryPhotos.length - 6} more)
+                    </span>
+                    <ChevronDown className="w-4 h-4 text-brand-teal" />
+                  </>
+                )}
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Bottom Callout: Host a drive at your institution */}

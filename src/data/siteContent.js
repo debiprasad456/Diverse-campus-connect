@@ -444,7 +444,6 @@ export const siteContent = {
     enquiryTypes: [
       { value: "college", label: "College / University Placement Cell" },
       { value: "corporate", label: "Corporate Employer / HR Recruiter" },
-      { value: "student", label: "Student / Job Seeker" },
       { value: "general", label: "General Consulting Inquiry" },
     ],
     infoCards: [

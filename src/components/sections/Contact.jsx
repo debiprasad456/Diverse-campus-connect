@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SectionHeading from '../common/SectionHeading';
 import { siteContent } from '../../data/siteContent';
-import DynamicIcon from '../common/DynamicIcon';
 import Button from '../common/Button';
 import { CheckCircle2, Send, RotateCcw } from 'lucide-react';
 
@@ -102,69 +101,8 @@ export const Contact = () => {
           subtitle={contact.subtitle}
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mt-12">
-          {/* Left Column: Contact Cards & Corporate Info */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="bg-gradient-to-br from-brand-navy-900 to-brand-navy-800 text-white rounded-2xl p-7 sm:p-8 shadow-card border border-brand-navy-700 space-y-6">
-              <div>
-                <span className="text-xs font-semibold uppercase tracking-wider text-brand-teal-300">
-                  Campus Consulting Desk
-                </span>
-                <h3 className="text-xl font-bold mt-1">
-                  Start the Conversation
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">
-                  Connect directly with the Diverse Campus Connect team for campus placement drive scheduling, recruiter alignments, and institutional MoUs.
-                </p>
-              </div>
-
-              <div className="space-y-3.5 pt-2">
-                {contact.infoCards.map((card, idx) => {
-                  const CardWrapper = card.href ? 'a' : 'div';
-                  return (
-                    <CardWrapper
-                      key={idx}
-                      {...(card.href
-                        ? {
-                            href: card.href,
-                            target: card.href.startsWith('http') ? '_blank' : undefined,
-                            rel: card.href.startsWith('http') ? 'noopener noreferrer' : undefined,
-                          }
-                        : {})}
-                      className={`p-3.5 rounded-xl bg-white/5 border border-white/10 flex items-start gap-3.5 transition-all ${
-                        card.href
-                          ? 'hover:bg-white/10 hover:border-brand-teal/40 group cursor-pointer'
-                          : ''
-                      }`}
-                    >
-                      <div className="p-2 rounded-lg bg-brand-teal/20 text-brand-teal-300 shrink-0 mt-0.5 group-hover:scale-105 transition-transform">
-                        <DynamicIcon name={card.iconName} className="w-5 h-5 text-brand-teal-300" />
-                      </div>
-                      <div className="min-w-0 flex-1">
-                        <div className="text-[11px] uppercase tracking-wider font-semibold text-slate-400">
-                          {card.title}
-                        </div>
-                        <div className="text-sm font-semibold text-white mt-0.5 break-words">
-                          {card.details}
-                        </div>
-                        <div className="text-xs text-slate-300">
-                          {card.subDetails}
-                        </div>
-                      </div>
-                    </CardWrapper>
-                  );
-                })}
-              </div>
-
-              <div className="pt-4 border-t border-white/10 text-xs text-slate-400 leading-relaxed">
-                Operating under the professional governance of <strong className="text-slate-200">Diverse Solutions</strong>. All inquiries are reviewed by our institutional consulting team.
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Contact Form with WhatsApp Integration */}
-          <div className="lg:col-span-7">
-            <div className="bg-white rounded-2xl p-7 sm:p-9 border border-slate-200/90 shadow-card">
+        <div className="max-w-2xl mx-auto mt-12">
+          <div className="bg-white rounded-2xl p-7 sm:p-10 border border-slate-200/90 shadow-card">
               {submittedData ? (
                 /* Success Feedback State */
                 <div className="py-6 space-y-6 animate-fade-in">
@@ -380,8 +318,7 @@ export const Contact = () => {
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
   );
 };
 

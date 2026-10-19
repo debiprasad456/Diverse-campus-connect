@@ -116,6 +116,8 @@ export const CampusDrives = ({ onOpenPartnerModal }) => {
                 <img
                   src={drive.image}
                   alt={`${drive.college} Campus Drive`}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                 />
 
@@ -233,6 +235,8 @@ export const CampusDrives = ({ onOpenPartnerModal }) => {
                 <img
                   src={photo.url}
                   alt={photo.title}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                 />
 

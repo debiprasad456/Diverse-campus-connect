@@ -140,7 +140,7 @@ export const Contact = () => {
                         <span>Direct WhatsApp Channel</span>
                       </div>
                       <p className="text-xs text-emerald-800">
-                        Connect with our recruitment desk on WhatsApp at <strong className="text-emerald-950">+91 82600 54398</strong>.
+                        Connect directly with our recruitment desk on WhatsApp for instant coordination.
                       </p>
                     </div>
                     <a
@@ -301,7 +301,7 @@ export const Contact = () => {
                   <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
                     <div className="text-[11px] text-slate-500 text-center sm:text-left">
                       <span>Direct connection to our recruitment desk via WhatsApp.</span>
-                      <span className="block text-slate-400 font-medium">Official Helpline: +91 82600 54398</span>
+                      <span className="block text-slate-400 font-medium">Official Telephone: <a href="tel:+916743140347" className="hover:text-slate-600 transition-colors">+91 674 3140347</a></span>
                     </div>
                     <Button
                       type="submit"

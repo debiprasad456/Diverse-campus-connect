@@ -20,7 +20,7 @@ export const WhatsAppButton = () => {
         }`}
       >
         <span className="w-2 h-2 rounded-full bg-emerald-400 mr-2 animate-ping" />
-        Chat on WhatsApp (+91 82600 54398)
+        Chat on WhatsApp
       </span>
 
       {/* Floating Action Button */}

@@ -87,7 +87,7 @@ export const PartnerModal = ({ isOpen, onClose, onSelectTrack }) => {
               <div className="p-3.5 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-emerald-900 flex items-center justify-between gap-3 text-left">
                 <div>
                   <span className="font-bold block text-emerald-950">WhatsApp Official Channel:</span>
-                  <span>+91 82600 54398</span>
+                  <span>Connect with our recruitment desk</span>
                 </div>
                 <a
                   href={whatsappUrl}

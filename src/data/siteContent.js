@@ -7,7 +7,7 @@ export const siteContent = {
     tagline: "Bridging Campuses. Connecting Careers.",
     description:
       "Diverse Campus Connect seamlessly unites educational institutions, premier employers, and ambitious students through structured campus placements, strategic corporate hiring, curated internship programs, and industry–academia partnerships.",
-    websiteUrl: "http://www.diversesolutions.in/",
+    websiteUrl: "https://dscampusconnect.co.in",
     linkedinUrl: "https://www.linkedin.com/company/diverse-recruitment-solutions/posts/?feedView=all",
   },
 
@@ -439,10 +439,9 @@ export const siteContent = {
     title: "Start Your Campus Recruitment Partnership Today",
     subtitle:
       "Whether you are a college TPO seeking hiring partners, a corporate HR leader planning campus drives, or a student inquiring about upcoming initiatives, our team is ready to connect.",
-    phone: "+91 82600 54398",
+    telephone: "+91 674 3140347",
     whatsappNumber: "918260054398",
     email: "hr.diversesolutions@gmail.com",
-    website: "http://www.diversesolutions.in/",
     linkedin: "https://www.linkedin.com/company/diverse-recruitment-solutions/posts/?feedView=all",
     address: "Ground floor, Plot - 3521/8176, Palasuni, Rasulgarh, Bhubaneswar, Odisha 751025",
     enquiryTypes: [
@@ -459,10 +458,10 @@ export const siteContent = {
       },
       {
         iconName: "Phone",
-        title: "WhatsApp & Direct Call",
-        details: "+91 82600 54398",
-        subDetails: "Instant response for placement drives",
-        href: "https://wa.me/918260054398",
+        title: "Official Telephone",
+        details: "+91 674 3140347",
+        subDetails: "Office & consulting desk",
+        href: "tel:+916743140347",
       },
       {
         iconName: "Mail",

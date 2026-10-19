@@ -1,4 +1,5 @@
 import {
+  Globe,
   GraduationCap,
   Mail,
   MapPin,
@@ -214,6 +215,17 @@ export const Footer = ({ onOpenPartnerModal }) => {
                   className="hover:text-white transition-colors break-all"
                 >
                   <span className="font-semibold text-white block">hr@dscampusconnect.co.in</span>
+                </a>
+              </li>
+              <li className="flex items-start gap-1">
+                <Globe className="w-4 h-4 text-brand-teal-400 shrink-0 mt-0.5" />
+                <a
+                  href="https://www.dscampusconnect.co.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors break-all"
+                >
+                  <span className="font-semibold text-white block">www.dscampusconnect.co.in</span>
                 </a>
               </li>
               <li className="flex items-start gap-2.5">
